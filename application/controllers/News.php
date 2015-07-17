@@ -7,6 +7,9 @@ class News extends CI_Controller {
         {
                 parent::__construct();
                 $this->load->model('news_model');
+				
+				$this->config->set_item('banner', 'News Banner');
+				
         }//end constructor()
 
        public function index()
@@ -14,9 +17,8 @@ class News extends CI_Controller {
         $data['news'] = $this->news_model->get_news();
         $data['title'] = 'News archive';
 
-        $this->load->view('templates/header', $data);
         $this->load->view('news/index', $data);
-        $this->load->view('templates/footer');
+        
 }//end index
 
         public function view($slug = NULL)
@@ -30,9 +32,9 @@ class News extends CI_Controller {
 
         $data['title'] = $data['news_item']['title'];
 
-        $this->load->view('templates/header', $data);
+        
         $this->load->view('news/view', $data);
-        $this->load->view('templates/footer');
+        
 }//end view
 
 	public function create()
@@ -47,9 +49,9 @@ class News extends CI_Controller {
 
     if ($this->form_validation->run() === FALSE)
     {//data not submitted
-        $this->load->view('templates/header', $data);
+        
         $this->load->view('news/create', $data);
-        $this->load->view('templates/footer', $data);
+        
 
     }
     else
@@ -64,9 +66,9 @@ class News extends CI_Controller {
 			$success= "News not entered!";
 		}
 		$data['success']= $success;
-        $this->load->view('news/feedback', $data);
+        
 		$this->load->view('templates/header', $data);
-		$this->load->view('templates/footer', $data);
+		
     }
 }//end create
 

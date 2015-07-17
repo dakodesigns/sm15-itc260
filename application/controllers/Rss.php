@@ -20,10 +20,10 @@ class Rss extends CI_Controller {
   $count=0;
   foreach($xml->channel->item as $story)
   
-  { if($count==4){
+  { if($count==3){
 	  break;}
 
-    echo '<a href="' . $story->link . '">' . $story->title . '</a><br />'; 
+    echo '<a href="' . $story->link . '"></a>'; 
     echo '<p>' . $story->description . '</p><br/>';
 	$count++;
   }
@@ -38,7 +38,7 @@ class Rss extends CI_Controller {
   $count2=0;
   foreach($xml->channel->item as $story)
   
-  { if($count2==4){
+  { if($count2==3){
 	  break;}
 
     echo '<a href="' . $story->link . '">' . $story->title . '</a><br />'; 
@@ -55,7 +55,7 @@ $request = "https://news.google.com/news?pz=1&cf=all&ned=us&hl=en&topic=b&output
   $count3=0;
   foreach($xml->channel->item as $story)
   
-  { if($count3==4){
+  { if($count3==3){
 	  break;}
 
     echo '<a href="' . $story->link . '">' . $story->title . '</a><br />'; 
